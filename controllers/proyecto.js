@@ -83,7 +83,7 @@ const updateProyectoByID = async (req = request,
     res = response) => {
 
     try{
-        const { id } = req.params
+        const id  = req.params.id
         const data = req.body
         const proyecto  = await Proyecto.findByIdAndUpdate(id, data, {new: true})
         return res.status(201).json(proyecto)
