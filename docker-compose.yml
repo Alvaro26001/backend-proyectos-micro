@@ -8,13 +8,19 @@ services:
     build:
       context: . 
     ports:
-      - "4002:4002"
-      - "4003:4002"
+      - "4002"
+    networks:
+      - proyectos-app
+  proyectos-backend-micro-2:
+    container_name: proyectos-backend-micro-2
+    image: proyectos-backend-micro:v1 
+    ports:
+      - "4002"
     networks:
       - proyectos-app
   balanceador-carga:
     container_name: balanceador-carga
-    image: alanceador-carga:v1
+    image: balanceador-carga:v1
     build:
       context: ./balanceador 
     ports:
